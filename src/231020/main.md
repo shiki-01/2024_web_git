@@ -30,15 +30,17 @@ Git を GUI で操作できるようにしたもの
 ### プルリクエストの送る流れ
 
 ```mermaid
-graph LR;
-clone or fork-->branch
-branch-->add
-add-->commit
-commit-->push
-push-->commit
-push-->pull request
-pull request-->review
-review-->re commit
-re commit-->review
-review-->merge
+graph LR
+
+  cloneorfork-->branch
+  branch-->add
+  add-->commit
+  commit-->push
+  push-->commit
+  push-->pullrequest
+  pullrequest-->review
+  review-->recommit
+  recommit-->review
+  review-->merge
+
 ```
