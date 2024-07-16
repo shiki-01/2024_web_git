@@ -27,20 +27,56 @@ Git を GUI で操作できるようにしたもの
 1. パスワード
 1. 色々
 
-### プルリクエストの送る流れ
+### プルリクエストの流れ
 
+#### フローチャート
 ```mermaid
+---
+title: Pull Request
+---
 graph LR
 
-  cloneorfork-->branch
-  branch-->add
-  add-->commit
-  commit-->push
-  push-->commit
-  push-->pullrequest
-  pullrequest-->review
-  review-->recommit
-  recommit-->review
-  review-->merge
+  subgraph Eddit
+    direction LR
+      push-->commit
+      commit-->push
+  end
+
+  subgraph PullRequest
+    direction LR
+      review-->ReCommit
+      ReCommit-->review
+  end
+
+  CloneOrFork-->Branch
+  Branch-->Add
+  Add-->Eddit
+  Eddit-->PullRequest
+  PullRequest-->Merge
 
 ```
+#### ユースケース
+
+```mermaid
+sequenceDiagram
+    participant プログラマ
+    participant Github
+    participant レビューア
+    participant GithubAction
+
+    プログラマ->>Github: pull-requestを作成
+    Github->>レビューア: pull-requestを通知
+    レビューア->>Github: コメントを投稿
+    Github->>プログラマ: コメントを通知
+    プログラマ->>Github: 修正コードをpush
+    Github->>レビューア: 修正内容を通知
+    レビューア->>Github: pull-requestをマージ
+    Github->>GithubAction: ビルド・テスト・デプロイを実行
+```
+
+## その他
+
+### コンフリクトが起きた場合
+
+**コンフリクトとは？**\
+コンフリクトとは…
