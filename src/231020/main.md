@@ -2,7 +2,7 @@
 
 ## Git とは?
 
-| Git（ギット）は、プログラムのソースコードなどの変更履歴を記録・追跡するための分散型バージョン管理システムである\[Wikipedia](https://ja.m.wikipedia.org/wiki/Git) より
+> Git（ギット）は、プログラムのソースコードなどの変更履歴を記録・追跡するための分散型バージョン管理システムである\ [Wikipedia](https://ja.m.wikipedia.org/wiki/Git) より
 
 主にプログラミングなどのソースコードを管理するもの。
 
